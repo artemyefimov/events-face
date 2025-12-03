@@ -9,7 +9,7 @@ from .serializers import EventSerializer
 
 
 class EventListAPIView(generics.ListAPIView):
-    queryset = Event.objects.select_related("place")
+    queryset = Event.objects.filter(status=Event.Status.OPEN).select_related("place")
     serializer_class = EventSerializer
     pagination_class = EventCursorPagination
     filter_backends = [
