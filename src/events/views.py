@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import filters, generics, permissions
 
 from events.models import Event
 
@@ -18,7 +18,5 @@ class EventListAPIView(generics.ListAPIView):
         filters.SearchFilter,
     ]
     filterset_class = EventFilter
-    # search_fields = ["name"]
-    # ordering_fields = ["event_time"]
     ordering = ["event_time"]
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
